@@ -1,0 +1,187 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-gov-blue: var(--gov-blue);
+  --color-gov-blue-soft: var(--gov-blue-soft);
+  --color-orange: var(--orange);
+  --color-orange-glow: var(--orange-glow);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+}
+
+:root {
+  /* Dark navy + white + gov blue theme */
+  --background: oklch(0.13 0.04 260);
+  --foreground: oklch(0.98 0.005 250);
+
+  --card: oklch(0.18 0.04 260 / 0.6);
+  --card-foreground: oklch(0.98 0.005 250);
+  --popover: oklch(0.16 0.04 260);
+  --popover-foreground: oklch(0.98 0.005 250);
+
+  --primary: oklch(0.62 0.18 250);          /* gov blue #2196F3-ish */
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.22 0.05 260);
+  --secondary-foreground: oklch(0.98 0.005 250);
+  --muted: oklch(0.22 0.04 260);
+  --muted-foreground: oklch(0.72 0.03 250);
+  --accent: oklch(0.72 0.19 55);             /* orange */
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.12);
+  --ring: oklch(0.62 0.18 250);
+
+  --navy: oklch(0.18 0.04 260);
+  --navy-deep: oklch(0.10 0.035 260);
+  --gov-blue: oklch(0.55 0.18 255);
+  --gov-blue-soft: oklch(0.72 0.13 250);
+  --orange: oklch(0.72 0.19 55);
+  --orange-glow: oklch(0.78 0.17 60);
+  --success: oklch(0.68 0.18 150);
+  --warning: oklch(0.78 0.16 75);
+
+  --radius: 16px;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: transparent;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility glass {
+  background: linear-gradient(180deg, rgba(18, 34, 68, 0.45) 0%, rgba(10, 20, 40, 0.3) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@utility glass-strong {
+  background: linear-gradient(180deg, rgba(18, 34, 68, 0.7) 0%, rgba(10, 20, 40, 0.55) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+@utility grid-bg {
+  background-image:
+    linear-gradient(oklch(1 0 0 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+@utility text-gradient-blue {
+  background: linear-gradient(120deg, #ffffff 0%, #93c5fd 60%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility text-gradient-orange {
+  background: linear-gradient(120deg, #fb923c, #f97316);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility btn-primary-orange {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  color: #fff;
+  box-shadow: 0 10px 30px -10px rgba(249, 115, 22, 0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  &:hover { transform: translateY(-1px); filter: brightness(1.05); box-shadow: 0 14px 40px -10px rgba(249,115,22,.7); }
+}
+
+@utility btn-secondary-glass {
+  background: oklch(1 0 0 / 0.06);
+  border: 1px solid oklch(1 0 0 / 0.15);
+  color: #fff;
+  transition: all .2s ease;
+  &:hover { background: oklch(1 0 0 / 0.10); transform: translateY(-1px); }
+}
+
+@utility input {
+  width: 100%;
+  border-radius: 12px;
+  background: oklch(1 0 0 / 0.04);
+  border: 1px solid oklch(1 0 0 / 0.10);
+  padding: 0.65rem 0.85rem;
+  color: #fff;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color .15s ease, background .15s ease;
+  &:focus { border-color: color-mix(in oklab, var(--gov-blue) 60%, transparent); background: oklch(1 0 0 / 0.06); }
+  &::placeholder { color: oklch(1 0 0 / 0.4); }
+}
+
+@utility glow-blue {
+  box-shadow: 0 0 0 1px oklch(1 0 0 / 0.08), 0 20px 60px -20px color-mix(in oklab, var(--gov-blue) 60%, transparent);
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: .55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: -200; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float { animation: float-y 6s ease-in-out infinite; }
+.animate-float-slow { animation: float-y 9s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 3.5s ease-in-out infinite; }
+.animate-dash { stroke-dasharray: 6 8; animation: dash-flow 4s linear infinite; }
+
+/* hide horizontal overflow from absolutely positioned decorations */
+html, body { overflow-x: hidden; }
