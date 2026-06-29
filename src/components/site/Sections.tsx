@@ -23,25 +23,19 @@ const solidColors = [
 // ---------- SECTION 1 : WHAT IS SUVIDHA ----------
 export function WhatIs() {
   const leftFeatures = [
-    { I: Lock, t: "Secure Authentication" },
-    { I: Bot, t: "AI Sahayak" },
-    { I: ScanLine, t: "Aadhaar QR Verification" },
-    { I: ScanFace, t: "Face Authentication" },
-    { I: FileText, t: "Digital Documents" },
-    { I: Ticket, t: "Smart Queue Token" },
-    { I: CreditCard, t: "Utility Bill Payments" },
-    { I: ClipboardCheck, t: "Civic Service Applications" }
+    { I: Users, t: "Unified Citizen ID" },
+    { I: RefreshCw, t: "Real-time Sync Node" },
+    { I: Database, t: "Offline-First Edge" },
+    { I: ShieldCheck, t: "DigiLocker Bridge" },
+    { I: KeySquare, t: "Biometric Sandbox" }
   ];
 
   const rightFeatures = [
-    { I: AlertTriangle, t: "Complaint Management" },
-    { I: MapPin, t: "Kiosk Locator" },
-    { I: Languages, t: "Multi-language Support" },
-    { I: Accessibility, t: "Accessibility Features" },
-    { I: Bell, t: "Live Notifications" },
-    { I: Receipt, t: "Smart Receipt Generation" },
-    { I: LineChart, t: "Application Tracking" },
-    { I: RefreshCw, t: "Cloud Synchronization" }
+    { I: Bot, t: "Voice-First Guidance" },
+    { I: Accessibility, t: "WCAG AA Accessible" },
+    { I: Languages, t: "Vernacular Engine" },
+    { I: Receipt, t: "Instant Smart Slip" },
+    { I: Bell, t: "Proactive Alerts" }
   ];
 
   return (
@@ -620,106 +614,16 @@ const layers = [
   { I: Globe, t: "Government APIs", d: "DigiLocker · UPI · eKYC (Future)" },
 ];
 export function Architecture() {
-  const [activeLayer, setActiveLayer] = useState<number>(0);
-
   return (
     <Section id="architecture" eyebrow="System Architecture" title={<>A platform built for <span className="text-gradient-blue">scale & trust.</span></>}
       subtitle="A layered architecture engineered for security, observability and clean separation of concerns.">
-      <div className="grid lg:grid-cols-12 gap-10 items-center">
-        {/* Left Column: Pictorial Architecture Stack (7 cols on large screens) */}
-        <div className="lg:col-span-7 bg-[#0b1329] rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-white/[0.02] pointer-events-none" />
-          
-          <div className="text-center mb-6">
-            <span className="text-xs font-bold text-orange uppercase tracking-widest bg-orange/10 px-3 py-1 rounded-full">
-              System Architecture Flow
-            </span>
-          </div>
-
-          {/* Visual Layer Stack */}
-          <div className="flex flex-col gap-5 relative max-w-md mx-auto">
-            {layers.map((l, i) => {
-              const color = solidColors[i % solidColors.length];
-              const isActive = activeLayer === i;
-              
-              return (
-                <div
-                  key={l.t}
-                  onClick={() => setActiveLayer(i)}
-                  className={`cursor-pointer group relative rounded-xl p-4 flex items-center gap-4 transition-all duration-300 transform ${
-                    isActive 
-                      ? "scale-105 shadow-[0_0_20px_rgba(251,146,60,0.3)] ring-2 ring-orange" 
-                      : "opacity-85 hover:opacity-100 hover:scale-[1.02]"
-                  } ${color.bg}`}
-                >
-                  {/* Layer Indicator */}
-                  <div className="absolute -left-3 size-7 rounded-full bg-slate-900 border-2 border-white/20 text-[11px] font-extrabold text-white grid place-items-center shadow-lg">
-                    L{i + 1}
-                  </div>
-
-                  {/* Icon */}
-                  <div className="size-10 rounded-lg bg-white/20 grid place-items-center shrink-0 ml-2">
-                    <l.I className="size-5 text-white" />
-                  </div>
-
-                  {/* Text */}
-                  <div className="flex-1 text-left">
-                    <div className="text-white font-extrabold text-sm sm:text-base">{l.t}</div>
-                    <div className={`text-xs ${color.desc} font-medium`}>{l.d}</div>
-                  </div>
-
-                  {/* Flow Arrow */}
-                  {i < layers.length - 1 && (
-                    <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-10 size-5 rounded-full bg-slate-900 border border-white/10 grid place-items-center shadow">
-                      <ChevronDown className="size-3 text-orange animate-bounce" />
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Right Column: Dynamic Deep-Dive (5 cols on large screens) */}
-        <div className="lg:col-span-5 space-y-6">
-          <div className="bg-[#112240] rounded-3xl p-6 border border-slate-800 shadow-xl relative">
-            <div className="absolute -top-3 left-6 px-3 py-0.5 rounded bg-orange text-[10px] uppercase font-bold text-white tracking-widest shadow">
-              Layer L{activeLayer + 1} Details
-            </div>
-            
-            <div className="flex items-center gap-3 mt-2">
-              <div className="p-2.5 rounded-xl bg-orange/20 text-orange">
-                {(() => {
-                  const CurrentIcon = layers[activeLayer].I;
-                  return <CurrentIcon className="size-6" />;
-                })()}
-              </div>
-              <h3 className="text-white text-xl font-extrabold">{layers[activeLayer].t}</h3>
-            </div>
-            
-            <p className="text-slate-300 text-sm mt-4 leading-relaxed min-h-[120px]">
-              {activeLayer === 0 && "The entry point for citizens. Supports real-time interaction through both the physical self-service kiosk terminals and the native companion mobile application, enabling seamless start-and-resume workflows."}
-              {activeLayer === 1 && "Ensures secure and reliable citizen authentication. Integrates live facial recognition and liveness detection, physical Aadhaar QR card scanning, and secure phone OTP fallback verification."}
-              {activeLayer === 2 && "The core application engine. Coordinates service discovery, automated department dispatching, form validation, dynamic workflow progression, and citizen query management."}
-              {activeLayer === 3 && "Secure database layer utilizing end-to-end data encryption. Stores encrypted citizen records, offline-first transaction queues, and real-time synchronization state variables."}
-              {activeLayer === 4 && "Provides a secure control panel for municipal administrators and operators to monitor kiosk health status, request volume statistics, and operational performance KPIs."}
-              {activeLayer === 5 && "Integrates securely with official government external nodes like DigiLocker for document verification, eKYC validation, and secure payment/receipt gateways."}
-            </p>
-
-            <div className="mt-6 pt-4 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
-              <span>Status: <strong className="text-emerald-400 font-bold">Active & Secure</strong></span>
-              <span>Subsystems: {activeLayer === 0 ? "2 Active" : "3 Verified"}</span>
-            </div>
-          </div>
-
-          {/* Interactive Instructions Card */}
-          <div className="bg-[#1b2a47] rounded-2xl p-4 border border-slate-800 flex items-center gap-3">
-            <Sparkles className="size-5 text-orange shrink-0 animate-pulse" />
-            <span className="text-xs text-white/80 leading-snug">
-              Click on any layer of the architecture stack on the left to inspect its deep-dive subsystem details and security parameters.
-            </span>
-          </div>
-        </div>
+      <div className="relative glass-strong rounded-3xl p-6 lg:p-10 border border-white/10 shadow-2xl overflow-hidden flex justify-center items-center">
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-orange/10 pointer-events-none" />
+        <img 
+          src="/images/architecture.png" 
+          alt="System Architecture Diagram" 
+          className="relative z-10 w-full max-w-4xl rounded-2xl shadow-xl object-contain"
+        />
       </div>
     </Section>
   );
@@ -1062,36 +966,18 @@ export function Security() {
 }
 
 // ---------- SECTION 14 : IMPACT ----------
-const impact = [
-  { I: Landmark, n: "15+", l: "Government Services" },
-  { I: Accessibility as any, n: "100%", l: "Accessibility Focus" },
-  { I: Network as any, n: "2", l: "Connected Platforms" },
-  { I: Bot, n: "AI", l: "Assisted Experience" },
-  { I: Activity, n: "24×7", l: "Self Service" },
-  { I: Globe, n: "Gov", l: "Future Ready" },
-];
 export function Impact() {
   return (
     <Section eyebrow="Real-World Impact" title={<>Transforming citizen services <span className="text-gradient-orange">at scale.</span></>}
       subtitle="A unified ecosystem designed to simplify public service delivery and elevate the citizen experience.">
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {impact.map((i, k) => (
-          <motion.div key={i.l} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: k * 0.05 }}
-            className="glass rounded-2xl p-5">
-            <i.I className="size-6 text-gov-blue-soft mb-3" />
-            <div className="text-3xl font-bold text-white">{i.n}</div>
-            <div className="text-xs text-white/60 mt-1">{i.l}</div>
-          </motion.div>
-        ))}
-      </div>
-
-      <div className="mt-8 grid md:grid-cols-3 gap-4">
+      <div className="grid md:grid-cols-3 gap-4">
         {[
           { t: "For Citizens", items: ["Faster Services", "No Long Queues", "Better Accessibility"] },
           { t: "For Government", items: ["Better Monitoring", "Digital Governance", "Reduced Paperwork"] },
           { t: "For Smart Cities", items: ["Scalable Infrastructure", "Centralized Platform", "Connected Ecosystem"] },
-        ].map((b) => (
-          <div key={b.t} className="glass-strong rounded-2xl p-6">
+        ].map((b, k) => (
+          <motion.div key={b.t} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: k * 0.05 }}
+            className="glass-strong rounded-2xl p-6">
             <div className="text-orange text-xs uppercase tracking-widest mb-3">{b.t}</div>
             <ul className="space-y-2">
               {b.items.map((x) => (
@@ -1100,7 +986,7 @@ export function Impact() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
     </Section>
@@ -1180,7 +1066,7 @@ export function FAQ() {
 // ---------- SECTION 18 : CTA ----------
 export function CTA() {
   return (
-    <section id="cta" className="relative py-24">
+    <section id="cta" className="relative py-12">
       <div className="mx-auto max-w-7xl px-4">
         <div className="relative overflow-hidden glass-strong rounded-3xl p-10 lg:p-16 text-center">
           <div className="absolute inset-0 -z-10">
@@ -1310,11 +1196,11 @@ export function Footer() {
 function Section({ id, eyebrow, title, subtitle, children }:
   { id?: string; eyebrow: string; title: React.ReactNode; subtitle?: string; children: React.ReactNode }) {
   return (
-    <section id={id} className="relative py-20 lg:py-28">
+    <section id={id} className="relative py-10 lg:py-14">
       <div className="mx-auto max-w-7xl px-4">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 glass rounded-full px-3 py-1 text-[11px] uppercase tracking-widest text-orange">
-            <span className="size-1.5 rounded-full bg-orange" /> {eyebrow}
+          <div className="inline-flex items-center gap-2.5 bg-[#FD8008] text-white rounded-full px-5 py-2 text-xs font-bold uppercase tracking-widest shadow-lg shadow-orange-500/10 border border-orange-500/30">
+            <span className="size-2 rounded-full bg-white" /> {eyebrow}
           </div>
           <h2 className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.1]">{title}</h2>
           {subtitle && <p className="mt-4 text-white/65 text-base sm:text-lg">{subtitle}</p>}

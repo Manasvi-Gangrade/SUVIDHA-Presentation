@@ -3,7 +3,7 @@ import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { Stats } from "@/components/site/Stats";
 import {
-  WhatIs, Bento, KioskShowcase, MobileShowcase, SyncSection, WhySuvidha,
+  WhatIs, Bento, KioskShowcase, MobileShowcase, WhySuvidha,
   HowItWorks, AISahayak, Architecture, TechStack, AdminDashboard, SmartCity,
   Security, Impact, Roadmap, FAQ, CTA, Contact, Footer,
 } from "@/components/site/Sections";
@@ -33,7 +33,6 @@ function Index() {
         <Bento />
         <KioskShowcase />
         <MobileShowcase />
-        <SyncSection />
         <WhySuvidha />
         <HowItWorks />
         <AISahayak />

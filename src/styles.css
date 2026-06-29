@@ -185,3 +185,48 @@
 
 /* hide horizontal overflow from absolutely positioned decorations */
 html, body { overflow-x: hidden; }
+
+/* Hide Google Translate top banner frame to maintain clean premium design */
+iframe.goog-te-banner-frame {
+  display: none !important;
+}
+body {
+  top: 0 !important;
+}
+
+/* Style Google Translate select element to match theme */
+.goog-te-combo {
+  padding: 8px 32px 8px 16px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  font-family: inherit !important;
+  color: #1e293b !important; /* slate-800 */
+  background-color: #f8fafc !important; /* slate-50 */
+  border: 1px solid rgba(226, 232, 240, 0.8) !important; /* slate-200/80 */
+  border-radius: 9999px !important;
+  outline: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 12px center !important;
+  background-size: 14px !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.goog-te-combo:hover {
+  background-color: #f1f5f9 !important; /* slate-100 */
+}
+
+/* Hide Google Translate branding and powered-by labels */
+.goog-logo-link,
+.goog-te-gadget span,
+.goog-te-gadget a {
+  display: none !important;
+}
+.goog-te-gadget {
+  font-size: 0 !important;
+  color: transparent !important;
+}

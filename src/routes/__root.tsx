@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { TTSProvider, GoogleTranslateWidget } from "../contexts/LanguageContext";
 
 function NotFoundComponent() {
   return (
@@ -127,7 +128,9 @@ function RootComponent() {
       </div>
 
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <TTSProvider>
+        <Outlet />
+      </TTSProvider>
     </QueryClientProvider>
   );
 }

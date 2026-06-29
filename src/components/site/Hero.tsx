@@ -17,8 +17,8 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <div className="inline-flex items-center gap-2 glass rounded-full px-3 py-1.5 text-xs text-white/80">
-            <span className="size-1.5 rounded-full bg-orange animate-pulse" />
+          <div className="inline-flex items-center gap-2.5 bg-[#FD8008] text-white rounded-full px-5 py-2 text-sm font-bold shadow-lg shadow-orange-500/20 border border-orange-500/30">
+            <span className="size-2 rounded-full bg-white animate-pulse" />
             National Grand Finale · Government Technology
           </div>
           <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
@@ -32,14 +32,7 @@ export function Hero() {
             built for India&apos;s Smart Cities and digital governance.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#features" className="btn-primary-orange rounded-xl px-5 py-3 text-sm font-semibold inline-flex items-center gap-2">
-              Explore Platform <ArrowRight className="size-4" />
-            </a>
-            <a href="#cta" className="btn-secondary-glass rounded-xl px-5 py-3 text-sm font-semibold inline-flex items-center gap-2">
-              <Play className="size-4" /> Watch Demo
-            </a>
-          </div>
+
         </motion.div>
 
         {/* RIGHT */}
@@ -70,17 +63,17 @@ export function Hero() {
           </svg>
 
           {/* Kiosk */}
-          <div className="absolute left-0 top-8 w-[72%] z-10 animate-float">
+          <div className="absolute left-0 top-[20%] w-[62%] z-10 animate-float">
             <KioskMockup />
           </div>
 
           {/* Phone */}
-          <div className="absolute right-0 bottom-4 w-[30%] z-20 animate-float-slow">
+          <div className="absolute right-0 top-[10%] w-[32%] z-20 animate-float-slow">
             <PhoneMockup />
           </div>
 
           {/* Real-time sync label */}
-          <div className="absolute right-[18%] top-[35%] z-30 -translate-x-1/2 glass-strong rounded-full px-3 py-1.5 text-[11px] text-white/90 inline-flex items-center gap-2 shadow-xl border border-white/10">
+          <div className="absolute left-[65%] top-[40%] z-30 -translate-x-1/2 glass-strong rounded-full px-3 py-1.5 text-[11px] text-white/90 inline-flex items-center gap-2 shadow-xl border border-white/10">
             <span className="size-1.5 rounded-full bg-orange animate-pulse" />
             Real-Time Sync
           </div>

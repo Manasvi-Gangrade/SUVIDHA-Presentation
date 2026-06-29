@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, ChevronDown, Volume2, VolumeX, Mic } from "lucide-react";
+import { useTTS, GoogleTranslateWidget } from "@/contexts/LanguageContext";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -13,20 +14,10 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-const languages = [
-  { name: "English", code: "EN" },
-  { name: "Select Language", code: "SELECT" },
-  { name: "Hindi (हिंदी)", code: "HI" },
-  { name: "Marathi (मराठी)", code: "MR" },
-  { name: "Tamil (தமிழ்)", code: "TA" }
-];
-
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [soundOn, setSoundOn] = useState(true);
-  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
-  const [selectedLang, setSelectedLang] = useState("Select Language");
+  const { ttsEnabled, setTtsEnabled } = useTTS();
   const [micActive, setMicActive] = useState(false);
 
   useEffect(() => {
@@ -76,45 +67,22 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            {/* Managed Language dropdown */}
-            <div className="relative">
-              <button
-                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
-                className="h-10 px-4 text-xs sm:text-sm font-medium text-slate-800 bg-slate-50 border border-slate-200/80 rounded-full flex items-center justify-between gap-2.5 hover:bg-slate-100 transition shadow-sm w-36 sm:w-40"
-              >
-                <span className="truncate">{selectedLang}</span>
-                <ChevronDown className="size-4 text-slate-500 shrink-0" />
-              </button>
-
-              {langDropdownOpen && (
-                <div className="absolute right-0 mt-1.5 w-40 bg-white border border-slate-200/80 rounded-2xl shadow-lg py-1.5 z-50">
-                  {languages.map((l) => (
-                    <button
-                      key={l.code}
-                      onClick={() => {
-                        setSelectedLang(l.name);
-                        setLangDropdownOpen(false);
-                      }}
-                      className="w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#FD8008] transition-colors font-semibold"
-                    >
-                      {l.name}
-                    </button>
-                  ))}
-                </div>
-              )}
+            {/* Google Translate Widget */}
+            <div className="scale-90 origin-right sm:scale-100 flex items-center">
+              <GoogleTranslateWidget />
             </div>
 
             {/* Managed Speaker Button */}
             <button
-              onClick={() => setSoundOn(!soundOn)}
+              onClick={() => setTtsEnabled(!ttsEnabled)}
               className={`size-10 rounded-full flex items-center justify-center border border-slate-200/80 shadow-sm transition ${
-                soundOn
+                ttsEnabled
                   ? "bg-slate-50 text-slate-700 hover:bg-slate-100"
                   : "bg-red-50 text-red-500 border-red-200 hover:bg-red-100/70"
               }`}
-              title={soundOn ? "Mute Speech" : "Unmute Speech"}
+              title={ttsEnabled ? "Mute Speech" : "Unmute Speech"}
             >
-              {soundOn ? <Volume2 className="size-4.5" /> : <VolumeX className="size-4.5" />}
+              {ttsEnabled ? <Volume2 className="size-4.5" /> : <VolumeX className="size-4.5" />}
             </button>
 
             {/* Managed Mic Button */}
